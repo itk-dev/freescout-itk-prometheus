@@ -27,7 +27,7 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return void
    */
-  public function boot() {
+  public function boot(): void {
     $this->registerConfig();
     $this->registerViews();
     $this->registerFactories();
@@ -39,7 +39,7 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return void
    */
-  public function register() {
+  public function register():void {
     $this->registerTranslations();
     $this->app->singleton(CollectorRegistry::class, function () {
 
@@ -63,7 +63,7 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return void
    */
-  protected function registerConfig() {
+  protected function registerConfig(): void {
     $this->publishes([
       __DIR__ . '/../Config/config.php' => config_path('itkprometheus.php'),
     ], 'config');
@@ -77,7 +77,7 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return void
    */
-  public function registerViews() {
+  public function registerViews(): void {
     $viewPath = resource_path('views/modules/itkprometheus');
 
     $sourcePath = __DIR__ . '/../Resources/views';
@@ -96,15 +96,17 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return void
    */
-  public function registerTranslations() {
+  public function registerTranslations(): void {
     $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/lang');
   }
 
   /**
    * Register an additional directory of factories.
    * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
+   *
+   * @return void
    */
-  public function registerFactories() {
+  public function registerFactories():void {
     if (!app()->environment('production')) {
       app(Factory::class)->load(__DIR__ . '/../Database/factories');
     }
@@ -115,7 +117,7 @@ class ItkPrometheusServiceProvider extends ServiceProvider {
    *
    * @return array
    */
-  public function provides() {
+  public function provides(): array {
     return [];
   }
 
