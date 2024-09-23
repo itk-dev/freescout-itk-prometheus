@@ -36,11 +36,22 @@ class PrometheusService
   }
 
   /**
+   * Increase a counter.
+   *
+   * @param array $counter
+   *   The counter registration.
+   * @param array $labels
+   *   The related labels.
+   * @param int $count
+   *   the count to increase by.
+   *
+   * @return void
    * @throws \Prometheus\Exception\MetricsRegistrationException
+   *
    */
-  public function incCounterBy($labels, $count = 1): void
+  public function incCounterBy(array $counter, array $labels, int $count = 1): void
   {
-    $counter = $this->collectorRegistry->getOrRegisterCounter('orders', 'count', 'Number of Orders', array_keys($labels));
-    $counter->incBy($count, array_values($labels));
+      $counter = $this->collectorRegistry->getOrRegisterCounter($counter['name_space'], $counter['name'], $counter['help'], array_keys($labels));
+      $counter->incBy($count, array_values($labels));
   }
 }
