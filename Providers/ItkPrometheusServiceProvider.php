@@ -33,15 +33,6 @@ class ItkPrometheusServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-        $this->hooks();
-    }
-
-    /**
-     * Module hooks.
-     */
-    public function hooks()
-    {
-        
     }
 
     /**

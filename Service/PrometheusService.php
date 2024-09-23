@@ -22,7 +22,11 @@ class PrometheusService
   }
 
   /**
+   * Render text for metrics output.
+   *
    * @return string
+   *   The metrics output.
+   *
    * @throws \Throwable
    */
   public function metrics(): string
@@ -30,7 +34,7 @@ class PrometheusService
       $renderer = new RenderTextFormat();
       $result = $renderer->render($this->collectorRegistry->getMetricFamilySamples());
 
-      header( 'Content-type: ' . RenderTextFormat::MIME_TYPE );
+      header('Content-type: ' . RenderTextFormat::MIME_TYPE);
 
       return $result;
   }
