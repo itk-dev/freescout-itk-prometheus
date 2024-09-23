@@ -5,14 +5,13 @@ namespace Modules\ItkPrometheus\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Modules\ItkPrometheus\Service\PrometheusService;
 
-class ItkPrometheusController extends Controller
-{
-    private PrometheusService $service;
+class ItkPrometheusController extends Controller {
 
-    public function __construct(PrometheusService $service)
-    {
-      $this->service = $service;
-    }
+  private PrometheusService $service;
+
+  public function __construct(PrometheusService $service) {
+    $this->service = $service;
+  }
 
   /**
    * Provide metrics endpoint.
@@ -22,8 +21,8 @@ class ItkPrometheusController extends Controller
    *
    * @throws \Throwable
    */
-    public function metrics(): string
-    {
-      return $this->service->metrics();
-    }
+  public function metrics(): string {
+    return $this->service->metrics();
+  }
+
 }

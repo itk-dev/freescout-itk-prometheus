@@ -5,8 +5,8 @@ namespace Modules\ItkPrometheus\Service;
 use Prometheus\CollectorRegistry;
 use Prometheus\RenderTextFormat;
 
-class PrometheusService
-{
+class PrometheusService {
+
   /**
    * @var \Prometheus\CollectorRegistry
    */
@@ -16,8 +16,7 @@ class PrometheusService
   /**
    * @param \Prometheus\CollectorRegistry $registry
    */
-  public function __construct (CollectorRegistry $registry)
-  {
+  public function __construct(CollectorRegistry $registry) {
     $this->collectorRegistry = $registry->getDefault();
   }
 
@@ -29,14 +28,13 @@ class PrometheusService
    *
    * @throws \Throwable
    */
-  public function metrics(): string
-  {
-      $renderer = new RenderTextFormat();
-      $result = $renderer->render($this->collectorRegistry->getMetricFamilySamples());
+  public function metrics(): string {
+    $renderer = new RenderTextFormat();
+    $result = $renderer->render($this->collectorRegistry->getMetricFamilySamples());
 
-      header('Content-type: ' . RenderTextFormat::MIME_TYPE);
+    header('Content-type: ' . RenderTextFormat::MIME_TYPE);
 
-      return $result;
+    return $result;
   }
 
   /**
@@ -53,9 +51,9 @@ class PrometheusService
    * @throws \Prometheus\Exception\MetricsRegistrationException
    *
    */
-  public function incCounterBy(array $counter, array $labels, int $count = 1): void
-  {
-      $counter = $this->collectorRegistry->getOrRegisterCounter($counter['name_space'], $counter['name'], $counter['help'], array_keys($labels));
-      $counter->incBy($count, array_values($labels));
+  public function incCounterBy(array $counter, array $labels, int $count = 1): void {
+    $counter = $this->collectorRegistry->getOrRegisterCounter($counter[ 'name_space' ], $counter[ 'name' ], $counter[ 'help' ], array_keys($labels));
+    $counter->incBy($count, array_values($labels));
   }
+
 }
