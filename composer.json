@@ -1,0 +1,28 @@
+{
+    "name": "freescout/itkprometheus",
+    "description": "",
+    "authors": [
+        {
+            "name": "FreeScout",
+            "email": "support@freescout.net"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\ItkPrometheus\\Providers\\ItkPrometheusServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ItkPrometheus\\": ""
+        }
+    },
+    "require": {
+        "promphp/prometheus_client_php": "^2.11"
+    }
+}
